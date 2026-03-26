@@ -1,0 +1,972 @@
+/*
+==========================================================================
+STYLE.CSS - Tourism Management System
+Luxury Premium Design System - Main Stylesheet
+==========================================================================
+*/
+
+/* ========== Google Fonts Import ========== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ========== CSS Custom Properties (Design Tokens) ========== */
+:root {
+    /* Luxury Color Palette */
+    --primary-navy: #0F172A;
+    --secondary-slate: #1E293B;
+    --accent-gold: #F59E0B;
+    --bg-soft-white: #F8FAFC;
+    --highlight-blue: #3B82F6;
+    --success-green: #10B981;
+    --danger-red: #EF4444;
+    --text-dark: #1F2937;
+    --text-medium: #6B7280;
+    --text-light: #9CA3AF;
+    --white: #FFFFFF;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    --gradient-gold: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+    --gradient-blue: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+    --gradient-overlay: linear-gradient(180deg, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+
+    /* Spacing (8px grid system) */
+    --space-1: 8px;
+    --space-2: 16px;
+    --space-3: 24px;
+    --space-4: 32px;
+    --space-5: 40px;
+    --space-6: 48px;
+    --space-7: 56px;
+    --space-8: 64px;
+    --space-10: 80px;
+    --space-12: 96px;
+    --space-16: 128px;
+
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+    --font-secondary: 'Inter', sans-serif;
+
+    /* Font Sizes */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3rem;
+    --text-6xl: 3.75rem;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+    --shadow-glow: 0 0 20px rgba(245, 158, 11, 0.3);
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 15px;
+    --radius-xl: 20px;
+    --radius-full: 9999px;
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 300ms ease;
+    --transition-slow: 500ms ease;
+}
+
+/* ========== Reset & Base Styles ========== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: var(--bg-soft-white);
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--primary-navy);
+}
+
+h1 {
+    font-size: var(--text-5xl);
+}
+
+h2 {
+    font-size: var(--text-4xl);
+}
+
+h3 {
+    font-size: var(--text-3xl);
+}
+
+h4 {
+    font-size: var(--text-2xl);
+}
+
+h5 {
+    font-size: var(--text-xl);
+}
+
+h6 {
+    font-size: var(--text-lg);
+}
+
+p {
+    margin: 0 0 var(--space-2);
+    color: var(--text-medium);
+}
+
+a {
+    color: var(--highlight-blue);
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+a:hover {
+    color: var(--accent-gold);
+    text-decoration: none;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+label {
+    margin: 0;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+/* ========== Container & Layout ========== */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-2);
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* ========== Top Header ========== */
+
+.top-header {
+    background: var(--primary-navy);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: var(--space-1) 0;
+}
+
+ul.tp-hd-lft {
+    float: left;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+ul.tp-hd-lft li {
+    display: inline-flex;
+    align-items: center;
+}
+
+ul.tp-hd-lft a,
+ul.tp-hd-rgt a {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-body);
+    transition: color var(--transition-base);
+}
+
+ul.tp-hd-lft a:hover,
+ul.tp-hd-rgt a:hover {
+    color: var(--accent-gold);
+}
+
+ul.tp-hd-rgt {
+    float: right;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+ul.tp-hd-rgt li {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+i.fa.fa-home {
+    font-size: 1.25rem;
+    color: var(--accent-gold);
+}
+
+/* ========== Main Header ========== */
+
+.header {
+    background: var(--white);
+    padding: var(--space-2) 0;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    z-index: 100;
+}
+
+.logo {
+    float: left;
+    margin-right: var(--space-8);
+}
+
+.logo a {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-navy);
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    transition: color var(--transition-base);
+}
+
+.logo a:hover {
+    color: var(--highlight-blue);
+}
+
+.logo span {
+    color: var(--accent-gold);
+    margin-left: 8px;
+}
+
+.lock {
+    float: right;
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    margin-top: 8px;
+}
+
+.lock li {
+    display: inline-flex;
+}
+
+i.fa.fa-lock {
+    color: var(--success-green);
+    font-size: 1.75rem;
+}
+
+.securetxt {
+    color: var(--success-green);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    line-height: 1.2;
+    font-family: var(--font-body);
+}
+
+/* ========== Navigation ========== */
+
+.footer-btm {
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    transition: all var(--transition-base);
+}
+
+.navbar {
+    border: none;
+    background: transparent;
+    margin: 0;
+    border-radius: 0;
+}
+
+.navbar-default {
+    background: transparent;
+    border: none;
+}
+
+.navbar-toggle {
+    background: var(--accent-gold);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+}
+
+.navbar-toggle:hover,
+.navbar-toggle:focus {
+    background: var(--highlight-blue);
+}
+
+.navbar-toggle .icon-bar {
+    background: var(--white);
+}
+
+.nav.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+}
+
+.nav.navbar-nav li a {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: var(--text-base);
+    font-weight: 500;
+    padding: var(--space-1) var(--space-2);
+    font-family: var(--font-body);
+    position: relative;
+    transition: all var(--transition-base);
+}
+
+.nav.navbar-nav li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--accent-gold);
+    transform: translateX(-50%);
+    transition: width var(--transition-base);
+}
+
+.nav.navbar-nav li a:hover {
+    color: var(--accent-gold);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav.navbar-nav li a:hover::after {
+    width: 80%;
+}
+
+/* ========== Hero / Banner Section ========== */
+
+.banner {
+    background: url(../images/3.jpg) no-repeat center center;
+    background-size: cover;
+    min-height: 700px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-overlay);
+    z-index: 1;
+}
+
+.banner .container {
+    position: relative;
+    z-index: 2;
+}
+
+.banner h1 {
+    font-size: 3.5rem;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: var(--space-5);
+    font-weight: 800;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    letter-spacing: -1px;
+}
+
+/* Banner variants */
+.banner-1,
+.banner-2,
+.banner-3 {
+    background: url(../images/3.jpg) no-repeat center center;
+    background-size: cover;
+    min-height: 200px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-1::before,
+.banner-2::before,
+.banner-3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-overlay);
+    z-index: 1;
+}
+
+.banner-1 .container,
+.banner-2 .container,
+.banner-3 .container {
+    position: relative;
+    z-index: 2;
+}
+
+.banner-1 h1,
+.banner-2 h1,
+.banner-3 h1 {
+    font-size: 3rem;
+    color: var(--white);
+    text-align: center;
+    font-weight: 700;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: var(--space-5) 0;
+    margin: 0;
+}
+
+/* ========== Package Cards (Holiday Section) ========== */
+
+.holiday,
+.rooms {
+    padding: var(--space-10) 0;
+    background: var(--bg-soft-white);
+}
+
+.holiday h3,
+.rooms h3 {
+    font-size: var(--text-4xl);
+    color: var(--primary-navy);
+    margin-bottom: var(--space-6);
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+}
+
+.holiday h3::after,
+.rooms h3::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-gold);
+    border-radius: var(--radius-full);
+}
+
+/* Package Card Container */
+.rom-btm {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--space-4);
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: stretch;
+}
+
+.rom-btm:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.room-left {
+    float: left;
+    width: 25%;
+    position: relative;
+    overflow: hidden;
+}
+
+.room-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.rom-btm:hover .room-left img {
+    transform: scale(1.1);
+}
+
+.room-midle {
+    float: left;
+    width: 50%;
+    padding: var(--space-4);
+}
+
+.room-midle h4 {
+    font-size: var(--text-xl);
+    color: var(--primary-navy);
+    margin-bottom: var(--space-2);
+    font-weight: 600;
+    font-family: var(--font-heading);
+}
+
+.room-midle h6 {
+    font-size: var(--text-sm);
+    color: var(--accent-gold);
+    margin-bottom: var(--space-2);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.room-midle p {
+    font-size: var(--text-sm);
+    color: var(--text-medium);
+    line-height: 1.7;
+    margin-bottom: var(--space-1);
+}
+
+.room-midle p b {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.room-right {
+    float: left;
+    width: 25%;
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.room-right h5 {
+    font-size: var(--text-3xl);
+    color: var(--accent-gold);
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+    font-family: var(--font-heading);
+}
+
+/* ========== Buttons ========== */
+
+.view,
+a.learn,
+a.det,
+a.off,
+button.seabtn {
+    display: inline-block;
+    padding: 12px 32px;
+    font-size: var(--text-base);
+    font-weight: 600;
+    font-family: var(--font-body);
+    color: var(--white);
+    background: var(--gradient-gold);
+    border: none;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.view::before,
+a.learn::before,
+a.det::before,
+a.off::before,
+button.seabtn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.view:hover,
+a.learn:hover,
+a.det:hover,
+a.off:hover,
+button.seabtn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--shadow-glow), var(--shadow-xl);
+    color: var(--white);
+}
+
+.view:hover::before,
+a.learn:hover::before,
+a.det:hover::before,
+a.off:hover::before,
+button.seabtn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.view:focus,
+a.learn:focus,
+a.det:focus,
+a.off:focus,
+button.seabtn:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2);
+}
+
+/* ========== Stats / Routes Section ========== */
+
+.routes {
+    padding: var(--space-10) 0;
+    background: var(--white);
+}
+
+.routes-left {
+    float: left;
+    width: 33.33%;
+    padding: var(--space-4);
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.routes-left:hover {
+    transform: translateY(-5px);
+}
+
+.rou-left {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-2);
+}
+
+.rou-left a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-blue);
+    border-radius: 50%;
+    transition: all var(--transition-base);
+}
+
+.rou-left a:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-lg);
+}
+
+i.fa.fa-ticket,
+i.fa.fa-user,
+i.glyphicon.glyphicon-list-alt {
+    font-size: 2rem;
+    color: var(--white);
+}
+
+.rou-rgt h3 {
+    font-size: var(--text-4xl);
+    color: var(--primary-navy);
+    font-weight: 700;
+    margin-bottom: var(--space-1);
+}
+
+.rou-rgt p {
+    font-size: var(--text-lg);
+    color: var(--text-medium);
+    font-weight: 500;
+}
+
+/* ========== Forms ========== */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: var(--text-base);
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    background: var(--white);
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-md);
+    outline: none;
+    transition: all var(--transition-base);
+    margin-top: var(--space-1);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--highlight-blue);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    background: var(--white);
+}
+
+.inputLabel {
+    display: block;
+    font-weight: 600;
+    font-size: var(--text-sm);
+    color: var(--text-dark);
+    margin-bottom: var(--space-1);
+    font-family: var(--font-body);
+}
+
+.bnr-left,
+.bnr-right {
+    float: left;
+    width: 50%;
+    padding: 0 var(--space-2);
+}
+
+.ban-top,
+.ban-bottom {
+    margin-bottom: var(--space-3);
+}
+
+.sear {
+    text-align: center;
+    margin-top: var(--space-4);
+}
+
+/* Modal Forms - Glassmorphism */
+.modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+}
+
+.modal-header {
+    background: var(--gradient-primary);
+    color: var(--white);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    padding: var(--space-3);
+    border-bottom: none;
+}
+
+.modal-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--text-2xl);
+}
+
+.modal-body {
+    padding: var(--space-4);
+}
+
+/* ========== Footer ========== */
+
+.footer-top {
+    background: var(--bg-soft-white);
+    padding: var(--space-8) 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.footer-top h3 {
+    font-size: var(--text-2xl);
+    color: var(--primary-navy);
+    margin-bottom: var(--space-3);
+    font-weight: 700;
+}
+
+.footer-left li {
+    display: inline-block;
+    float: left;
+    width: 33.33%;
+    margin-bottom: var(--space-2);
+}
+
+.footer-left li a {
+    font-size: var(--text-sm);
+    color: var(--text-medium);
+    transition: color var(--transition-base);
+    font-family: var(--font-body);
+}
+
+.footer-left li a:hover {
+    color: var(--accent-gold);
+    padding-left: 4px;
+}
+
+/* Footer Bottom */
+.copy-right {
+    background: var(--primary-navy);
+    padding: var(--space-4) 0;
+    text-align: center;
+}
+
+.copy-right p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--text-sm);
+    margin: 0;
+    line-height: 1.8;
+}
+
+.copy-right p a {
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+.copy-right p a:hover {
+    color: var(--highlight-blue);
+}
+
+/* Social Media Icons */
+.footer-social-icons ul {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+}
+
+.footer-social-icons ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--white);
+    font-size: 1.125rem;
+    transition: all var(--transition-base);
+}
+
+.footer-social-icons ul li a:hover {
+    background: var(--accent-gold);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.footer-social-icons ul li a span {
+    display: none;
+}
+
+/* ========== Utility Classes ========== */
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mt-1 {
+    margin-top: var(--space-1);
+}
+
+.mt-2 {
+    margin-top: var(--space-2);
+}
+
+.mt-3 {
+    margin-top: var(--space-3);
+}
+
+.mt-4 {
+    margin-top: var(--space-4);
+}
+
+.mt-5 {
+    margin-top: var(--space-5);
+}
+
+.mb-1 {
+    margin-bottom: var(--space-1);
+}
+
+.mb-2 {
+    margin-bottom: var(--space-2);
+}
+
+.mb-3 {
+    margin-bottom: var(--space-3);
+}
+
+.mb-4 {
+    margin-bottom: var(--space-4);
+}
+
+.mb-5 {
+    margin-bottom: var(--space-5);
+}
+
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-lg);
+}
+
+.gradient-text {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ========== WOW.js Visibility Fix ========== */
+
+.wow {
+    visibility: hidden;
+}
+
+.wow.animated {
+    visibility: visible;
+}
